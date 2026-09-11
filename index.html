@@ -563,5 +563,40 @@
     </div>
     </section>
 
+    <!-- ===================================================== -->
+    <!-- ABOUT THE PRODUCT  -->
+    <!-- ===================================================== -->
+    <section class="section" id="about-product">
+    <div class="header" data-fade>
+        <!-- El eyebrow cambia con el slide activo (lo actualiza main.js) -->
+        <div class="eyebrow" id="aboutEyebrow">Demo</div>
+        <h2 class="title">
+        <span data-i18n="about.titlePrefix">SOBRE EL</span><br />
+        <span class="green" id="aboutSlideTitle">PRODUCTO</span>
+        </h2>
+        <p class="subtitle" id="aboutSlideSubtitle">
+        Una vista directa de SecurityBus en acción: monitoreo, alertas y control operativo para rutas más seguras.
+        </p>
+    </div>
+
+    <!-- Visor con carrusel -->
+    <div class="video-showcase" data-fade data-fade-delay="100">
+        <button class="arrow prev" id="aboutPrev" data-i18n-aria="about.prev" aria-label="Video anterior">‹</button>
+
+        <div class="video-shell">
+        <iframe class="video" id="aboutVideo"
+                src=""
+                title="Acerca del producto SecurityBus"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+        <div class="caption">
+            <span id="aboutCaptionTitle">PRODUCTO</span>
+            <span id="aboutCounter">1/2</span>
+        </div>
+        </div>
+
+        <button class="arrow next" id="aboutNext" data-i18n-aria="about.next" aria-label="Video siguiente">›</button>
+    </div>
+    </section>
 </body>
 </html>
