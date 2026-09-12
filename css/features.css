@@ -1,0 +1,90 @@
+#features {
+  padding: 100px 48px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+#features .header {
+  margin-bottom: 64px;
+}
+
+#features .subtitle {
+  max-width: 460px;
+}
+
+/* Grilla de tarjetas */
+#features .grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+#features .card {
+  background: var(--panel);
+  padding: 44px 36px;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.25s;
+  cursor: default;
+}
+
+/* Subrayado en hover (excepto tarjeta de pánico) */
+#features .card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+#features .card:hover { background: var(--panel-hover); }
+#features .card:not(.panic):hover::after { transform: scaleX(1); }
+
+#features .card.panic {
+  border-top: 2px solid var(--panic);
+}
+#features .card.panic::after { display: none; }
+
+.card-icon {
+  width: 32px;
+  height: 32px;
+  color: var(--accent);
+  margin-bottom: 22px;
+}
+.card.panic .card-icon { color: var(--panic); }
+
+.card-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.card-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  color: var(--text);
+}
+.card.panic .card-name { color: var(--panic); }
+
+.card-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+@media (max-width: 1024px) {
+  #features .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  #features { padding: 60px 24px; }
+  #features .grid { grid-template-columns: 1fr; }
+}

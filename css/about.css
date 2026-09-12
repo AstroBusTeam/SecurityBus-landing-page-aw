@@ -1,0 +1,74 @@
+#about-product {
+  padding: 0 48px 100px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+#about-product .header {
+  margin-bottom: 48px;
+}
+
+#about-product .subtitle {
+  max-width: 540px;
+}
+
+/* Contenedor del visor: flecha | video | flecha */
+#about-product .video-showcase {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr) 54px;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Marco del video */
+.video-shell {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  overflow: hidden;
+}
+
+/* Sombra interior */
+.video-shell::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 80px var(--overlay-soft);
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+
+@media (max-width: 760px) {
+  #about-product .video-showcase {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .video-shell {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  #about-product .video-showcase .prev,
+  #about-product .video-showcase .next {
+    justify-self: stretch;
+  }
+}
+
+@media (max-width: 640px) {
+  #about-product {
+    padding: 0 24px 60px;
+  }
+  #about-product .header {
+    margin-bottom: 36px;
+  }
+}

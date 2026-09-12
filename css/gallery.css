@@ -1,0 +1,62 @@
+#product-gallery {
+  padding: 0 48px 100px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+#product-gallery .header {
+  margin-bottom: 48px;
+}
+
+#product-gallery .subtitle {
+  max-width: 520px;
+}
+
+/* Contenedor del visor: flecha | imagen | flecha */
+#product-gallery .showcase {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr) 54px;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Marco de la imagen */
+#product-gallery .image-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+#product-gallery .image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 760px) {
+  #product-gallery {
+    padding: 0 24px 60px;
+  }
+
+  #product-gallery .header {
+    margin-bottom: 36px;
+  }
+
+  #product-gallery .showcase {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  #product-gallery .image-frame {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  #product-gallery .showcase .prev,
+  #product-gallery .showcase .next {
+    justify-self: stretch;
+  }
+}

@@ -1,0 +1,98 @@
+#como-funciona {
+  padding: 0 0 100px;
+}
+
+#como-funciona .inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+#como-funciona .header {
+  margin-bottom: 64px;
+}
+
+#como-funciona .subtitle {
+  max-width: 460px;
+}
+
+/* Grilla de pasos */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.step {
+  background: var(--panel);
+  padding: 44px 32px;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.25s;
+}
+.step:hover { background: var(--panel-hover); }
+
+/* Número grande de fondo */
+.step-num-bg {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 88px;
+  color: var(--ghost);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Número del badge */
+#como-funciona .badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: var(--accent);
+  color: #000;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  margin-bottom: 24px;
+  flex-shrink: 0;
+}
+
+/* Paso de alerta (3) en rojo */
+#como-funciona .badge.badge-alert {
+  background: var(--panic);
+  color: #fff;
+}
+
+.step-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  color: var(--text);
+}
+
+.step-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  #como-funciona .inner { padding: 0 24px; }
+  .steps-grid { grid-template-columns: 1fr; }
+  #como-funciona { padding-bottom: 60px; }
+}
