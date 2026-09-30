@@ -358,13 +358,22 @@
     },
 
     gallery: {
-      srcs: [
-        'images/controlCenter.png',
-        'images/dashboard.png',
-        'images/passengerCounter.png',
-        'images/alertLogs.jpg',
-        'images/panicSignal.png'
-      ],
+      srcs: {
+        es: [
+          'images/controlCenter-spanish.png',
+          'images/dashboard-spanish.png',
+          'images/passengerCounter-spanish.png',
+          'images/alertLogs-spanish.png',
+          'images/panicSignal-spanish.png'
+        ],
+        en: [
+          'images/controlCenter-english.png',
+          'images/dashboard-english.png',
+          'images/passengerCounter-english.png',
+          'images/alertLogs-english.png',
+          'images/panicSignal-english.png'
+        ]
+      },
       slides: {
         es: [
           { alt: 'Centro de control SecurityBus', label: 'Centro de control' },
