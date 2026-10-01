@@ -154,10 +154,10 @@
 
       'footer.brand': 'AstroBus',
       'footer.copy': '© 2026 AstroBus Grupo 2 · UPC',
-      'footer.link1': 'Privacidad',
-      'footer.link2': 'Seguridad',
-      'footer.link3': 'Contacto',
-      'footer.link4': 'Sistema'
+      'footer.link1': 'Planes',
+      'footer.link2': 'Contacto',
+      'footer.link3': 'Producto',
+      'footer.link4': 'Galería'
     },
 
     en: {
@@ -312,10 +312,10 @@
 
       'footer.brand': 'AstroBus',
       'footer.copy': '© 2026 AstroBus Grupo 2 · UPC',
-      'footer.link1': 'Privacy',
-      'footer.link2': 'Security',
-      'footer.link3': 'Contact',
-      'footer.link4': 'System'
+      'footer.link1': 'Plans',
+      'footer.link2': 'Contact',
+      'footer.link3': 'Product',
+      'footer.link4': 'Gallery'
     }
   }
 
