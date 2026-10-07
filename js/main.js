@@ -7,6 +7,7 @@
     initFadeUp()
     initVideoCarousel()
     initGalleryCarousel()
+    initPrefetch()
   })
 
   /* =========================================================
@@ -77,27 +78,75 @@
   /* =========================================================
      CARRUSEL 
      ========================================================= */
+  function sourcesFor(data, lang) {
+    const other = lang === 'es' ? 'en' : 'es'
+    const srcs = data.srcs || []
+
+    if (Array.isArray(srcs)) {
+      return srcs.map((s) => ({ primary: s, fallback: '' }))
+    }
+
+    const mine = srcs[lang] || []
+    const others = srcs[other] || []
+    const total = Math.max(mine.length, others.length)
+    const list = []
+
+    for (let i = 0; i < total; i++) {
+      list.push({ primary: mine[i] || '', fallback: others[i] || '' })
+    }
+    return list
+  }
+
+  function setSource(el, entry) {
+    if (!el || !entry) return
+
+    const primary = entry.primary || entry.fallback
+    if (!primary || el.dataset.sbSrc === primary) return
+
+    el.onerror = null
+    el.dataset.sbSrc = primary
+    el.src = primary
+
+    el.onerror = () => {
+      el.onerror = null
+      if (!entry.primary || !entry.fallback || entry.fallback === primary) return
+      el.dataset.sbSrc = entry.fallback
+      el.src = entry.fallback
+    }
+  }
+
   function initCarousel(dataKey, prevId, nextId, render) {
     const data = window.SB.CAROUSELS[dataKey]
     let index = 0
 
+    const totalFor = (lang) => {
+      const n = sourcesFor(data, lang).length
+      return n || (data.slides[lang] || data.slides.es).length
+    }
+
+
     const draw = () => {
-      const slides = data.slides[window.SB.getLang()] || data.slides.es
-      render(slides[index], index, slides.length)
+      const lang = window.SB.getLang()
+      const slides = data.slides[lang] || data.slides.es
+      const srcs = sourcesFor(data, lang)
+      const total = totalFor(lang)
+      if (!total) return
+      if (index > total - 1) index = total - 1
+      render(slides[index] || {}, index, total, srcs[index])
+    }
+
+    const step = (delta) => {
+      const total = totalFor(window.SB.getLang())
+      if (!total) return
+      index = (index + delta + total) % total
+      draw()
     }
 
     const prev = document.getElementById(prevId)
     const next = document.getElementById(nextId)
-    prev.addEventListener('click', () => {
-      index = (index - 1 + data.srcs.length) % data.srcs.length
-      draw()
-    })
-    next.addEventListener('click', () => {
-      index = (index + 1) % data.srcs.length
-      draw()
-    })
+    prev.addEventListener('click', () => step(-1))
+    next.addEventListener('click', () => step(1))
 
-    /* Se vuelve a pintar el slide cuando cambia el idioma */
     document.addEventListener('langchange', draw)
 
     draw()
@@ -125,14 +174,35 @@
      CARRUSEL DE GALERÍA DE IMÁGENES
      ========================================================= */
   function initGalleryCarousel() {
-    initCarousel('gallery', 'galleryPrev', 'galleryNext', (slide, index, total) => {
+    initCarousel('gallery', 'galleryPrev', 'galleryNext', (slide, index, total, src) => {
       const img = document.getElementById('galleryImage')
-      const srcs = window.SB.CAROUSELS.gallery.srcs
 
-      img.src = srcs[index]
+      setSource(img, src)
       img.alt = slide.alt
       document.getElementById('galleryCaptionLabel').textContent = slide.label
       document.getElementById('galleryCounter').textContent = (index + 1) + '/' + total
     })
   }
+
+   function initPrefetch() {
+    const toggle = document.querySelector('.lang-toggle')
+    if (!toggle) return
+
+    const warm = () => {
+      const data = window.SB.CAROUSELS.gallery
+      const other = window.SB.getLang() === 'es' ? 'en' : 'es'
+      const mine = sourcesFor(data, window.SB.getLang()).map((s) => s.primary).join('|')
+      const theirs = sourcesFor(data, other).map((s) => s.primary).join('|')
+
+      if (mine === theirs) return
+
+      sourcesFor(data, other).forEach((s) => {
+        if (s.primary) new Image().src = s.primary
+      })
+    }
+
+    toggle.addEventListener('pointerenter', warm, { once: true })
+    toggle.addEventListener('focusin', warm, { once: true })
+  }
+
 })()

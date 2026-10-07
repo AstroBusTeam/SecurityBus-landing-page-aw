@@ -154,10 +154,10 @@
 
       'footer.brand': 'AstroBus',
       'footer.copy': '© 2026 AstroBus Grupo 2 · UPC',
-      'footer.link1': 'Privacidad',
-      'footer.link2': 'Seguridad',
-      'footer.link3': 'Contacto',
-      'footer.link4': 'Sistema'
+      'footer.link1': 'Planes',
+      'footer.link2': 'Contacto',
+      'footer.link3': 'Producto',
+      'footer.link4': 'Galería'
     },
 
     en: {
@@ -312,10 +312,10 @@
 
       'footer.brand': 'AstroBus',
       'footer.copy': '© 2026 AstroBus Grupo 2 · UPC',
-      'footer.link1': 'Privacy',
-      'footer.link2': 'Security',
-      'footer.link3': 'Contact',
-      'footer.link4': 'System'
+      'footer.link1': 'Plans',
+      'footer.link2': 'Contact',
+      'footer.link3': 'Product',
+      'footer.link4': 'Gallery'
     }
   }
 
@@ -358,13 +358,22 @@
     },
 
     gallery: {
-      srcs: [
-        'images/controlCenter.png',
-        'images/dashboard.png',
-        'images/passengerCounter.png',
-        'images/alertLogs.jpg',
-        'images/panicSignal.png'
-      ],
+      srcs: {
+        es: [
+          'images/controlCenter-spanish.png',
+          'images/dashboard-spanish.png',
+          'images/passengerCounter-spanish.png',
+          'images/alertLogs-spanish.png',
+          'images/panicSignal-spanish.png'
+        ],
+        en: [
+          'images/controlCenter-english.png',
+          'images/dashboard-english.png',
+          'images/passengerCounter-english.png',
+          'images/alertLogs-english.png',
+          'images/panicSignal-english.png'
+        ]
+      },
       slides: {
         es: [
           { alt: 'Centro de control SecurityBus', label: 'Centro de control' },
