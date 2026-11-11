@@ -322,8 +322,8 @@
   const CAROUSELS = {
     videos: {
       srcs: [
-        '',
-        ''
+        'https://www.youtube.com/embed/Nsoj39fO-LI',
+        'https://upcedupe-my.sharepoint.com/personal/u202418823_upc_edu_pe/_layouts/15/embed.aspx?UniqueId=5ad4cd83-0852-47ee-bfc0-eb02d4da4ccd&embed=%7B%22ust%22%3Afalse%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create'
       ],
       slides: {
         es: [
